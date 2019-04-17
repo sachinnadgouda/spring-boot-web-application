@@ -34,4 +34,4 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
         
       # run tests!
-      - run: mvn clean test
+      - run: mvn clean test -DargLine="-Djdk.net.URLClassPath.disableClassPathURLCheck=true -Xmx2048m -XX:MaxPermSize=1024m"
