@@ -1,4 +1,4 @@
-package com.springboot.web.first.application.springbootwebapplication;
+package com.springboot.web.application.test;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
