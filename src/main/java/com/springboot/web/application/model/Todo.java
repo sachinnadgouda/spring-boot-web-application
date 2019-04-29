@@ -16,19 +16,24 @@ public class Todo {
 	private Date targetDate;
     
 	private boolean isDone;
+	
+	private String firstName;
+	
+	private String lastName;
     
     public Todo() {
 		super();
     }
 
-    public Todo(int id, String user, String desc, Date targetDate,
-            boolean isDone) {
+    public Todo(int id, String user, String desc, Date targetDate, boolean isDone, String firstName, String lastName) {
         super();
         this.id = id;
         this.user = user;
         this.desc = desc;
         this.targetDate = targetDate;
         this.isDone = isDone;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public int getId() {
@@ -103,5 +108,21 @@ public class Todo {
                 "Todo [id=%s, user=%s, desc=%s, targetDate=%s, isDone=%s]", id,
                 user, desc, targetDate, isDone);
     }
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
 }

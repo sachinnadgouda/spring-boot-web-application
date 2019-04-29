@@ -1,17 +1,15 @@
 package com.springboot.web.application.test;
 
 import static org.junit.Assert.assertEquals;
-
 import java.util.Date;
 import java.util.List;
 import org.junit.Test;
-
 import com.springboot.web.application.model.Todo;
 import com.springboot.web.application.service.TodoService;
 
 public class TodoServiceTest {
 	
-	TodoService todoService = new TodoService();;
+	TodoService todoService = new TodoService();
 	
 	@Test
 	public void testRetriveTodo(){
@@ -32,7 +30,7 @@ public class TodoServiceTest {
 		String userName = "User1";
 		List<Todo> todoList = todoService.retrieveTodos(userName);
 		int currentSize = todoList.size();
-		todoService.addTodo(userName, "test description", new Date(), false);
+		todoService.addTodo(userName, "test description", new Date(), false, "", "");
 		List<Todo> updatedTodoList = todoService.retrieveTodos(userName);
 		assertEquals(currentSize + 1, updatedTodoList.size());
 	}

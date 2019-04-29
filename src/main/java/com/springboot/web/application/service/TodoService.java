@@ -15,13 +15,11 @@ import com.springboot.web.application.model.Todo;
 public class TodoService {
     private static List<Todo> todos = new ArrayList<Todo>();
     private static int todoCount = 3;
-
-    static {
-        todos.add(new Todo(1, "User1", "Learn Spring MVC", new Date(),
-                false));
-        todos.add(new Todo(2, "User1", "Learn Struts", new Date(), false));
-        todos.add(new Todo(3, "User1", "Learn Hibernate", new Date(),
-                false));
+      
+	static {
+        todos.add(new Todo(1, "User1", "Learn Spring MVC", new Date(),false, "FirstName", "LastName"));
+        todos.add(new Todo(2, "User1", "Learn Struts", new Date(), false,  "FirstName", "LastName"));
+        todos.add(new Todo(3, "User1", "Learn Hibernate", new Date(),false,  "FirstName", "LastName"));
     }
 
     public List<Todo> retrieveTodos(String user) {
@@ -48,9 +46,8 @@ public class TodoService {
 		todos.add(todo);
     }
 
-    public void addTodo(String name, String desc, Date targetDate,
-            boolean isDone) {
-        todos.add(new Todo(++todoCount, name, desc, targetDate, isDone));
+    public void addTodo(String name, String desc, Date targetDate, boolean isDone, String firstName, String lastName) {
+        todos.add(new Todo(++todoCount, name, desc, targetDate, isDone, firstName, lastName));
     }
 
     public void deleteTodo(int id) {

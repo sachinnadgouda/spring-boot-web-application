@@ -19,14 +19,19 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import com.springboot.web.application.model.Todo;
 import com.springboot.web.application.service.TodoService;
+import com.springboot.web.application.service.UserContentService;
 
 @Controller
 public class TodoController {
 	
 	@Autowired
 	TodoService todoService;
+	
+	@Autowired
+	UserContentService userDetailsService;
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -47,7 +52,7 @@ public class TodoController {
 	@RequestMapping(value="/add-todo", method=RequestMethod.GET )
 	public String showAddTodo(ModelMap model) {
 		String userName = getLoggedInUserName();
-		model.addAttribute("todo", new Todo(0, userName, "Default Desc", new Date(), false));
+		model.addAttribute("todo", new Todo(0, userName, "Default Desc", new Date(), false,"", ""));
 		return "add-todo";
 		
 	}
@@ -55,8 +60,7 @@ public class TodoController {
 	@RequestMapping(value="/add-todo", method=RequestMethod.POST )
 	public String addTodo(ModelMap model, @Valid Todo todo, BindingResult result) {
 		String userName = getLoggedInUserName();
-		todoService.addTodo(userName, todo.getDesc(), todo.getTargetDate(),
-				false);
+		todoService.addTodo(userName, todo.getDesc(), todo.getTargetDate(), false, userDetailsService.getFirstName(userName), userDetailsService.getLastName(userName));
 		return "redirect:/list-todos";	
 	}
 	
